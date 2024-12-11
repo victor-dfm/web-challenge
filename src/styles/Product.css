@@ -1,0 +1,492 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.backButtonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none !important;
+  border: none !important;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: none;
+}
+
+.backButton:hover {
+  color: #000;
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  height: 100%;
+  z-index: 2;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.infoProductContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.infoProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.descriptionContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.name {
+  font-size: 1.5rem;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.brand {
+  font-size: 0.8rem;
+  color: #666;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.description {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantity {
+  font-size: 1.2rem;
+}
+
+.totalPrice {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  color: black;
+}
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.addToCartButton {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.addToCartButton:hover {
+  background-color: #218838;
+}
+
+.backButton {
+  margin-top: 2rem;
+  background-color: #f5f5f5;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: #ddd;
+}
+
+.colorOptionsContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.colorOption {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  transition: border-color 0.3s ease;
+}
+
+.colorOption:hover {
+  border-color: #000;
+}
+
+.similarProductsTitle {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #000;
+}
+
+.similarProductsContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.similarProducts {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
+
+.similarProducts::-webkit-scrollbar {
+  height: 8px;
+}
+
+.similarProducts::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.scrollItem {
+  flex: 0 0 auto;
+  width: 350px;
+  height: 350px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scrollItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.specsContainer {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.specsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.specItem {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.specItem strong {
+  color: #000;
+}
+
+.storageOptionsContainer {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.storageOption {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.storageOptionButton {
+  color: #000;
+  padding: 1rem;
+  width: 100px;
+  height: 60px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.2s ease;
+}
+
+.storageOptionButton.selected {
+  border: 1px solid #000;
+}
+
+.storageOptionButton:hover {
+  transform: scale(1.05);
+  background-color: #f9f9f9;
+}
+
+.productTitle {
+  font-size: 1.6rem;
+  color: #000;
+  margin: 0;
+}
+
+.productPrice {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.productColor {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+.optionsStorageGrid {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.optionsColorsGrid {
+  display: flex;
+  gap: 1rem;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.optionButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #fff;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.optionButton:hover {
+  border-color: #333;
+}
+
+.addButton {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #ccc;
+  border: none;
+  cursor: not-allowed;
+  text-transform: uppercase;
+}
+
+.addButton:hover {
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addButton:enabled:hover {
+  background-color: #218838;
+}
+
+.specificationsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.specificationsTitle {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #000;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #000;
+}
+
+.specKey {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #000;
+  flex: 1;
+}
+
+.specValue {
+  font-size: 0.8rem;
+  color: #000;
+  flex: 2;
+  text-align: left;
+  padding-left: 1rem;
+  word-wrap: break-word;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  overflow: hidden;
+  height: 350px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.card:hover .overlay {
+  bottom: 0;
+}
+
+.card:hover .brand,
+.card:hover .model,
+.card:hover .price {
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: bottom 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.bottomInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.image {
+  width: auto;
+  height: 80%;
+  z-index: 2;
+  object-fit: contain;
+}
+
+.model {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #000;
+  z-index: 2;
+}
+
+.infoContainer {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .mainContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .storageOptionButton {
+    width: 80px;
+  }
+}

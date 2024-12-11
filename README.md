@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Web Challenge
 
-## Getting Started
 
-First, run the development server:
+## Description
+
+This project is a web application designed for browsing and managing a product catalogue with shopping cart 
+functionality. Users can browse products, view individual details, select specific configurations (such as storage and 
+colour) and add products to the cart.
+
+The application is built with Next.js and TypeScript, and uses React Context API for cart management. It also includes 
+image optimisation with next/image, testing with Jest, and a modular structure for easy maintenance.
+
+## Features
+
+- Product display: Displays products in a grid layout.
+- Real-time search: Filter products using lodash.debounce to optimise searches.
+- Detail view: Explore product details, including despecifications, storage options and available colours.
+- Shopping cart: Manage a shopping cart with persistence in localStorage.
+- Unit tests: Includes tests with Jest to validate key functions.
+
+## Installation
+
+Follow these steps to set up and run the project locally.
+
+Prerequisites:
+
+- Node.js version 18. 
+- npm as a package manager.
+
+Steps:
 
 ```bash
+git clone https://github.com/victor-dfm/web-challenge.git
+
+npm run install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- npm run dev: Starts the development server.
+- npm run build: Builds the application for production.
+- npm start: Serves the built application.
+- npm run lint: Run static code analysis with ESLint.
+- npm run test: Runs the tests with Jest.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure:
 
-## Learn More
+```bash
+web-challenge/
+├── __tests__/             # Unit testing
+│   ├── cartUtils.test.ts  # Tests for trolley utilities
+├── public/                # Static files
+├── src/
+│   ├── app/               # Next.js main routes and configuration
+│   │   ├── cart/          # Cart page
+│   │   ├── products/      # Product details page
+│   │   ├── favicon.ico    # Application icon
+│   │   ├── globals.css    # Global styles
+│   │   ├── layout.tsx     # Layout principal
+│   │   └── page.tsx       # Home page
+│   ├── components/        # Reusable components
+│   │   ├── Header.tsx     # Header of the application
+│   │   ├── ProductGrid.tsx # Product grid
+│   │   └── SearchInput.tsx # Search input component
+│   ├── context/           # Context API
+│   │   └── CartContext.tsx # Cart status management
+│   ├── styles/            # CSS style files
+│   │   ├── Cart.css
+│   │   ├── Header.css
+│   │   ├── Home.css
+│   │   ├── Product.css
+│   │   └── ProductGird.css
+│   ├── utils/             # Application utilities
+│   │   ├── apiClient.ts   # API calls
+│   │   └── cartUtils.ts   # Auxiliary functions for the trolley
+├── .env                   # Environment variables
+├── jest.config.js         # Jest configuration
+├── jest.setup.js          # Initial configuration file for Jest
+├── next.config.js         # Next.js configuration
+├── tsconfig.json          # TypeScript configuration
+├── .eslintrc.json         # ESLint configuration
+├── .prettierrc.json       # Prettier configuration
+├── package.json           # Dependencies and scripts
+└── README.md              # Project documentation
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Architecture
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js and React:
+- Uses the built-in Next.js router to handle dynamic views and static routes.
+- Uses React for user interface interaction.
 
-## Deploy on Vercel
+Context API:
+- CartContext handles the global state of the cart.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Persistence:
+- Cart data is stored in localStorage to maintain state between sessions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Image optimisation:
+- Uses the next/image component to optimise images.
+
+Testing:
+- Critical functions, such as addToCart, have unit tests implemented with Jest.
+
+## Future Improvements
+
+- Implement integration tests for interaction between components.
+- Add animations to improve user experience.
+- Improving design and performance
+- Add more eslint rules

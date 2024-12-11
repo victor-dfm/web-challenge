@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  padding: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.searchContainer {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 1px solid transparent;
+  outline: none;
+  color: #333;
+  background-color: white;
+}
+
+.searchInputFocus {
+  border-bottom: 1px solid #333;
+}
+
+.title {
+  color: black;
+}

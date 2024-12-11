@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  color: black;
+  height: 80px;
+}
+
+.logo {
+  width: 40px;
+  cursor: pointer;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.counter {
+  margin-left: 5px;
+  font-weight: bold;
+}
