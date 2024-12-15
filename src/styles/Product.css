@@ -7,8 +7,6 @@
   max-width: 100%;
   margin: 0 auto;
   background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .backButtonContainer {
@@ -21,27 +19,21 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: none !important;
-  border: none !important;
+  background: none;
+  border: none;
   color: #333;
-  font-size: 1rem;
   cursor: pointer;
   text-transform: uppercase;
   transition:
     color 0.3s ease,
     transform 0.3s ease;
-  padding: 0 !important;
-  margin: 0 !important;
   outline: none;
+  font-size: 1.2rem;
 }
 
 .backButton:hover {
   color: #000;
   transform: scale(1.05);
-}
-
-.icon {
-  font-size: 1.2rem;
 }
 
 .mainContainer {
@@ -162,21 +154,6 @@
 
 .addToCartButton:hover {
   background-color: #218838;
-}
-
-.backButton {
-  margin-top: 2rem;
-  background-color: #f5f5f5;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.backButton:hover {
-  background-color: #ddd;
 }
 
 .colorOptionsContainer {

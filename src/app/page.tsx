@@ -20,6 +20,7 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [debounceLoading, setDebounceLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const fetchProducts = useCallback(async (search: string) => {
@@ -27,6 +28,7 @@ export default function Home() {
       setLoading(true);
       const response = await apiClient.get(`/products?search=${search}`);
 
+      console.log("Response: ", response);
       const uniqueProducts = response.data.filter(
         (product: Product, index: number, self: Product[]) =>
           index === self.findIndex((p) => p.id === product.id),
@@ -37,6 +39,7 @@ export default function Home() {
       setError(`${e}`);
     } finally {
       setLoading(false);
+      setDebounceLoading(false);
     }
   }, []);
 
@@ -47,10 +50,11 @@ export default function Home() {
       } catch (e) {
         console.error(e);
       }
-    }, 300);
+    }, 1000);
   }, [fetchProducts]);
 
   useEffect(() => {
+    setDebounceLoading(true);
     debouncedSearch(searchTerm);
     return () => debouncedSearch.cancel();
   }, [searchTerm, debouncedSearch]);
@@ -69,7 +73,13 @@ export default function Home() {
     <div className="container">
       <SearchInput value={searchTerm} onChange={handleSearchChange} />
       <p className="title">{products.length} RESULTS</p>
-      <ProductGrid products={products} isLoading={loading} />
+      {debounceLoading ? (
+        <div className="loading">
+          <p className="title">Loading ...</p>
+        </div>
+      ) : (
+        <ProductGrid products={products} isLoading={loading} />
+      )}
     </div>
   );
 }

@@ -115,7 +115,7 @@ export default function ProductDetails() {
       <div className="backButtonContainer">
         <Link href="/">
           <button className="backButton">
-            <SlArrowLeft className="icon" /> BACK
+            <SlArrowLeft /> BACK
           </button>
         </Link>
       </div>

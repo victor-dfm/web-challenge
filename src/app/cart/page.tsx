@@ -15,7 +15,7 @@ export default function CartPage() {
       <div className="cartItemsGridContainer">
         <p className="title">Cart ({cart.length})</p>
         {cart.length === 0 ? (
-          <p>You have no items in your shopping cart.</p>
+          <p className="noItems">You have no items in your shopping cart.</p>
         ) : (
           <div className="cartItemsGrid">
             {cart.map((item, index) => (
