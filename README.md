@@ -77,7 +77,7 @@ web-challenge/
 │   │   └── cartUtils.ts   # Auxiliary functions for the trolley
 ├── .env                   # Environment variables
 ├── jest.config.js         # Jest configuration
-├── jest.setup.js          # Initial configuration file for Jest
+├── jest.setup.ts          # Initial configuration file for Jest
 ├── next.config.js         # Next.js configuration
 ├── tsconfig.json          # TypeScript configuration
 ├── .eslintrc.json         # ESLint configuration
