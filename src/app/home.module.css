@@ -31,3 +31,28 @@
   color: black;
   width: 100%;
 }
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  margin-top: 20px;
+}
+
+.loading div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.loading p {
+  animation: fadeInOut 1.5s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

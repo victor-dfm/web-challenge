@@ -1,20 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import "../styles/globals.css";
 import { CartProvider } from "@/context/CartContext";
-import Header from "../components/Header";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Header from "../components/Header/Header";
 
 export const metadata: Metadata = {
   title: "Web Challenge",
@@ -28,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
         <CartProvider>
           <Header />
           <main>{children}</main>

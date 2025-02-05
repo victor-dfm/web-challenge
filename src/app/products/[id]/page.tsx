@@ -4,9 +4,9 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import apiClient from "@/utils/apiClient";
-import "../../../styles/Product.css";
 import { useCart } from "@/context/CartContext";
 import { SlArrowLeft } from "react-icons/sl";
+import styles from "./productDetails.module.css";
 
 interface ColorOption {
   hexCode: string;
@@ -56,7 +56,7 @@ interface Product {
   storageOptions: StorageOptions[];
 }
 
-export default function ProductDetails() {
+export default function Page() {
   const params = useParams();
   const id = params.id;
   const [product, setProduct] = useState<Product | null>(null);
@@ -111,33 +111,37 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="container">
-      <div className="backButtonContainer">
+    <div className={styles.container}>
+      <div className={styles.backButtonContainer}>
         <Link href="/">
-          <button className="backButton">
+          <button className={styles.backButton}>
             <SlArrowLeft /> BACK
           </button>
         </Link>
       </div>
 
-      <div className="mainContainer">
-        <div className="imageContainer">
+      <div className={styles.mainContainer}>
+        <div className={styles.imageContainer}>
           <img src={selectedImage?.imageUrl} alt={product.name} />
         </div>
 
-        <div className="infoProductContainer">
-          <div className="infoProduct">
-            <p className="productTitle">{product.name}</p>
-            <p className="productPrice">From {selectedStorage?.price} EUR</p>
+        <div className={styles.infoProductContainer}>
+          <div className={styles.infoProduct}>
+            <p className={styles.productTitle}>{product.name}</p>
+            <p className={styles.productPrice}>
+              From {selectedStorage?.price} EUR
+            </p>
           </div>
 
-          <div className="storageOptions">
-            <p className="sectionTitle">Storage, HOW MUCH SPACE DO YOU NEED?</p>
-            <div className="optionsStorageGrid">
+          <div className={styles.storageOption}>
+            <p className={styles.sectionTitle}>
+              Storage, HOW MUCH SPACE DO YOU NEED?
+            </p>
+            <div className={styles.optionsStorageGrid}>
               {product.storageOptions.map((option, index) => (
                 <button
                   key={index}
-                  className={`storageOptionButton ${selectedStorage?.capacity === option.capacity ? "selected" : ""}`}
+                  className={`${styles.storageOptionButton} ${selectedStorage?.capacity === option.capacity ? "selected" : ""}`}
                   onClick={() => setSelectedStorage(option)}
                 >
                   {option.capacity}
@@ -146,24 +150,24 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          <div className="colorOptions">
-            <p className="sectionTitle">Color, pick your favourite</p>
-            <div className={"optionsColorsGrid"}>
+          <div className={styles.colorOption}>
+            <p className={styles.sectionTitle}>Color, pick your favourite</p>
+            <div className={styles.optionsColorsGrid}>
               {product.colorOptions.map((option) => (
                 <button
                   key={option.name}
-                  className={`colorOption ${selectedImage?.name === option.name ? "selected" : ""}`}
+                  className={`${styles.colorOption} ${selectedImage?.name === option.name ? "selected" : ""}`}
                   style={{ backgroundColor: option.hexCode }}
                   onClick={() => setSelectedImage(option)}
                   title={option.name}
                 />
               ))}
             </div>
-            <p className="productColor">{selectedImage?.name}</p>
+            <p className={styles.productColor}>{selectedImage?.name}</p>
           </div>
 
           <button
-            className={`addButton ${isAddToCartEnabled ? "" : "disabled"}`}
+            className={`${styles.addButton} ${isAddToCartEnabled ? "" : "disabled"}`}
             onClick={handleAddToCart}
             disabled={!isAddToCartEnabled}
           >
@@ -172,32 +176,32 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <div className="specificationsContainer">
-        <p className="specificationsTitle">Specifications</p>
-        <div className="specRow">
-          <span className="specKey">brand</span>
-          <span className="specValue">{product.brand}</span>
+      <div className={styles.specsContainer}>
+        <p className={styles.specificationsTitle}>Specifications</p>
+        <div className={styles.specRow}>
+          <span className={styles.specKey}>brand</span>
+          <span className={styles.specValue}>{product.brand}</span>
         </div>
-        <div className="specRow">
-          <span className="specKey">name</span>
-          <span className="specValue">{product.name}</span>
+        <div className={styles.specRow}>
+          <span className={styles.specKey}>name</span>
+          <span className={styles.specValue}>{product.name}</span>
         </div>
-        <div className="specRow">
-          <span className="specKey">description</span>
-          <span className="specValue">{product.description}</span>
+        <div className={styles.specRow}>
+          <span className={styles.specKey}>description</span>
+          <span className={styles.specValue}>{product.description}</span>
         </div>
         {product.specs &&
           Object.entries(product.specs).map(([key, value]) => (
-            <div key={key} className="specRow">
-              <span className="specKey">{key}</span>
-              <span className="specValue">{String(value)}</span>
+            <div key={key} className={styles.specRow}>
+              <span className={styles.specKey}>{key}</span>
+              <span className={styles.specValue}>{String(value)}</span>
             </div>
           ))}
       </div>
 
-      <div className="similarProductsContainer">
-        <p className="similarProductsTitle">Similar products</p>
-        <div className="similarProducts">
+      <div className={styles.similarProductsContainer}>
+        <p className={styles.similarProductsTitle}>Similar products</p>
+        <div className={styles.similarProducts}>
           {product.similarProducts.map((similarProduct, index) => (
             <Link
               key={`${similarProduct.id}-${index}`}
@@ -205,24 +209,26 @@ export default function ProductDetails() {
               passHref
             >
               <div
-                className="scrollItem"
+                className={styles.scrollItem}
                 key={`${product.id}-${similarProduct.id}-${index}`}
               >
-                <div className="card">
-                  <div className="overlay" />
-                  <div className="imageContainer">
+                <div className={styles.card}>
+                  <div className={styles.overlay} />
+                  <div className={styles.imageContainer}>
                     <img
                       src={similarProduct.imageUrl}
                       alt={similarProduct.name}
                     />
                   </div>
 
-                  <div className="infoContainer">
-                    <p className="brand">{similarProduct.brand}</p>
+                  <div className={styles.infoContainer}>
+                    <p className={styles.brand}>{similarProduct.brand}</p>
 
-                    <div className="bottomInfo">
-                      <p className="model">{similarProduct.name}</p>
-                      <p className="price">{similarProduct.basePrice} EUR</p>
+                    <div className={styles.bottomInfo}>
+                      <p className={styles.model}>{similarProduct.name}</p>
+                      <p className={styles.price}>
+                        {similarProduct.basePrice} EUR
+                      </p>
                     </div>
                   </div>
                 </div>

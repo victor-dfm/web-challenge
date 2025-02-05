@@ -3,10 +3,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import apiClient from "@/utils/apiClient";
 import debounce from "lodash/debounce";
-import SearchInput from "@/components/SearchInput";
-import ProductGrid from "@/components/ProductGrid";
+import SearchInput from "@/components/SearchInput/SearchInput";
+import ProductGrid from "@/components/ProductGrid/ProductGrid";
 
-import "../styles/Home.css";
+import styles from "./home.module.css";
 
 interface Product {
   id: string;
@@ -16,7 +16,7 @@ interface Product {
   imageUrl: string;
 }
 
-export default function Home() {
+export default function Page() {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -66,16 +66,16 @@ export default function Home() {
     [],
   );
 
-  if (loading) return <p>Loading the products...</p>;
+  if (loading) return <p className={styles.loading}>Loading the products...</p>;
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <SearchInput value={searchTerm} onChange={handleSearchChange} />
-      <p className="title">{products.length} RESULTS</p>
+      <p className={styles.title}>{products.length} RESULTS</p>
       {debounceLoading ? (
-        <div className="loading">
-          <p className="title">Loading ...</p>
+        <div className={styles.loading}>
+          <p className={styles.title}>Loading ...</p>
         </div>
       ) : (
         <ProductGrid products={products} isLoading={loading} />

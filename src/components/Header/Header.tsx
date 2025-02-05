@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { BsBag } from "react-icons/bs";
 import { BsBagFill } from "react-icons/bs";
 
-import "../styles/Header.css";
+import styles from "./Header.module.css";
 
 export default function Header() {
   const { cart } = useCart();
@@ -16,19 +16,19 @@ export default function Header() {
   const isCartPage = pathname === "/cart";
 
   return (
-    <header className="header">
-      <Link href="/">
+    <header className={styles.header}>
+      <Link href="/public">
         <p>WebChallengeLogo</p>
       </Link>
-      <div className="cart">
+      <div className={styles.cart}>
         <Link href="/cart">
           {isCartPage ? (
-            <BsBagFill className="icon" />
+            <BsBagFill className={styles.icon} />
           ) : (
-            <BsBag className="icon" />
+            <BsBag className={styles.icon} />
           )}
         </Link>
-        <span className="counter">{cartCount}</span>
+        <span className={styles.counter}>{cartCount}</span>
       </div>
     </header>
   );

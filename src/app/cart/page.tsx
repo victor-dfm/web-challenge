@@ -1,9 +1,9 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
-
-import "../../styles/Cart.css";
 import Link from "next/link";
+
+import styles from "./cart.module.css";
 
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
@@ -11,28 +11,30 @@ export default function CartPage() {
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div className="cartContainer">
-      <div className="cartItemsGridContainer">
-        <p className="title">Cart ({cart.length})</p>
+    <div className={styles.cartContainer}>
+      <div className={styles.cartItemsGridContainer}>
+        <p className={styles.title}>Cart ({cart.length})</p>
         {cart.length === 0 ? (
-          <p className="noItems">You have no items in your shopping cart.</p>
+          <p className={styles.noItems}>
+            You have no items in your shopping cart.
+          </p>
         ) : (
-          <div className="cartItemsGrid">
+          <div className={styles.cartItemsGrid}>
             {cart.map((item, index) => (
-              <div key={index} className="cartItemContainer">
-                <div className="imageContainer">
+              <div key={index} className={styles.cartItemContainer}>
+                <div className={styles.imageContainer}>
                   <img src={item.imageUrl} alt={item.name} />
                 </div>
-                <div className="detailsContainer">
+                <div className={styles.detailsContainer}>
                   <div>
-                    <p className="cartItemName">{item.name}</p>
-                    <p className="cartItemColor">
+                    <p className={styles.cartItemName}>{item.name}</p>
+                    <p className={styles.cartItemColor}>
                       {item.selectedStorage} | {item.selectedColor}
                     </p>
-                    <p className="cartItemPrice">{item.price} EUR</p>
+                    <p className={styles.cartItemPrice}>{item.price} EUR</p>
                   </div>
                   <button
-                    className="cartItemRemoveButton"
+                    className={styles.cartItemRemoveButton}
                     onClick={() => removeFromCart(item.id)}
                   >
                     Eliminar
@@ -44,16 +46,16 @@ export default function CartPage() {
         )}
       </div>
 
-      <div className="cartFooter">
-        <div className="continueShoppingContainer">
-          <button className="continueShoppingButton">
+      <div className={styles.cartFooter}>
+        <div className={styles.continueShoppingContainer}>
+          <button className={styles.continueShoppingButton}>
             <Link href="/">Continue shopping</Link>
           </button>
         </div>
-        <div className="totalSection">
-          <span className="totalText">TOTAL</span>
-          <span className="totalText">{totalPrice} EUR</span>
-          <button className="payButton">PAY</button>
+        <div className={styles.totalSection}>
+          <span className={styles.totalText}>TOTAL</span>
+          <span className={styles.totalText}>{totalPrice} EUR</span>
+          <button className={styles.payButton}>PAY</button>
         </div>
       </div>
     </div>

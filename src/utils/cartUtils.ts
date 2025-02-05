@@ -4,17 +4,20 @@ export const addToCartUtil = (
   currentCart: CartItem[],
   newItem: CartItem,
 ): CartItem[] => {
-  const existingItem = currentCart.find(
+  const existingItemIndex = currentCart.findIndex(
     (cartItem) =>
       cartItem.id === newItem.id &&
       cartItem.selectedStorage === newItem.selectedStorage &&
       cartItem.selectedColor === newItem.selectedColor,
   );
 
-  if (existingItem) {
-    alert("This product has already been added to your shopping cart.");
-    return currentCart;
+  if (existingItemIndex !== -1) {
+    return currentCart.map((item, index) =>
+      index === existingItemIndex
+        ? { ...item, quantity: item.quantity + 1 }
+        : item,
+    );
   }
 
-  return [...currentCart, newItem];
+  return [...currentCart, { ...newItem, quantity: 1 }];
 };
