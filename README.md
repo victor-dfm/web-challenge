@@ -32,7 +32,7 @@ Steps:
 ```bash
 git clone https://github.com/victor-dfm/web-challenge.git
 
-npm run install
+npm install
 
 npm run dev
 ```
