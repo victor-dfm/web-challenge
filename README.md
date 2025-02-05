@@ -32,7 +32,7 @@ Steps:
 ```bash
 git clone https://github.com/victor-dfm/web-challenge.git
 
-npm run install
+npm install
 
 npm run dev
 ```
@@ -59,7 +59,7 @@ web-challenge/
 │   │   ├── favicon.ico    # Application icon
 │   │   ├── globals.css    # Global styles
 │   │   ├── layout.tsx     # Layout principal
-│   │   └── page.tsx       # Home page
+│   │   └── page.tsx       # Page page
 │   ├── components/        # Reusable components
 │   │   ├── Header.tsx     # Header of the application
 │   │   ├── ProductGrid.tsx # Product grid
@@ -67,11 +67,11 @@ web-challenge/
 │   ├── context/           # Context API
 │   │   └── CartContext.tsx # Cart status management
 │   ├── styles/            # CSS style files
-│   │   ├── Cart.css
-│   │   ├── Header.css
-│   │   ├── Home.css
-│   │   ├── Product.css
-│   │   └── ProductGird.css
+│   │   ├── cart.module.css
+│   │   ├── Header.module.css
+│   │   ├── Page.module.css
+│   │   ├── cart.module.css
+│   │   └── ProductGrid.module.css
 │   ├── utils/             # Application utilities
 │   │   ├── apiClient.ts   # API calls
 │   │   └── cartUtils.ts   # Auxiliary functions for the trolley
