@@ -15,7 +15,7 @@ apiClient.interceptors.request.use(
     if (error.response) {
       console.error("Error in API response: ", error.response.data);
       if (error.response.status === 401) {
-        alert("Authentication error. Please check your API cave.");
+        alert("Authentication error. Please check your API key.");
       }
     } else if (error.request) {
       console.error("No response was received from API: ", error.request);

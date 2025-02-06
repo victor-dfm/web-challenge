@@ -27,8 +27,6 @@ export default function Page() {
     try {
       setLoading(true);
       const response = await apiClient.get(`/products?search=${search}`);
-
-      console.log("Response: ", response);
       const uniqueProducts = response.data.filter(
         (product: Product, index: number, self: Product[]) =>
           index === self.findIndex((p) => p.id === product.id),
