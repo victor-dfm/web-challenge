@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { addToCartUtil } from "@/utils/cartUtils";
+import { addToCartUtil } from "@/utils/cart-utils";
 
 export interface CartItem {
   id: string;

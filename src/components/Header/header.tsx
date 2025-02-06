@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "@/context/CartContext";
+import { useCart } from "@/context/cart-context";
 import { usePathname } from "next/navigation";
 import { BsBag } from "react-icons/bs";
 import { BsBagFill } from "react-icons/bs";
 
-import styles from "./Header.module.css";
+import styles from "./header.module.css";
 
 export default function Header() {
   const { cart } = useCart();

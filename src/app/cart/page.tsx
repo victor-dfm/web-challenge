@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "@/context/CartContext";
+import { useCart } from "@/context/cart-context";
 import Link from "next/link";
 
 import styles from "./cart.module.css";

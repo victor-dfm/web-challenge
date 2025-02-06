@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import apiClient from "@/utils/apiClient";
+import apiClient from "@/utils/api-client";
 import debounce from "lodash/debounce";
-import SearchInput from "@/components/SearchInput/SearchInput";
-import ProductGrid from "@/components/ProductGrid/ProductGrid";
+import SearchInput from "@/components/SearchInput/search-input";
+import ProductGrid from "@/components/ProductGrid/product-grid";
 
 import styles from "./home.module.css";
 

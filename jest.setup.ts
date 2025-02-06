@@ -1,3 +1,1 @@
-import "@testing-library/jest-dom";
-
-global.alert = jest.fn();
+import "@testing-library/jest-dom/extend-expect";

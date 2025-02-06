@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 
-import styles from "./SearchInput.module.css";
+import styles from "./search-input.module.css";
 
 interface SearchInputProps {
   value: string;

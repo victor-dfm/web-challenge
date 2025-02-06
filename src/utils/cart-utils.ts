@@ -1,4 +1,4 @@
-import { CartItem } from "@/context/CartContext";
+import { CartItem } from "@/context/cart-context";
 
 export const addToCartUtil = (
   currentCart: CartItem[],

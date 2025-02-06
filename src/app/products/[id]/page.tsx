@@ -3,10 +3,10 @@
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import apiClient from "@/utils/apiClient";
-import { useCart } from "@/context/CartContext";
+import apiClient from "@/utils/api-client";
+import { useCart } from "@/context/cart-context";
 import { SlArrowLeft } from "react-icons/sl";
-import styles from "./productDetails.module.css";
+import styles from "./product-details.module.css";
 
 interface ColorOption {
   hexCode: string;
@@ -84,8 +84,8 @@ export default function Page() {
   }, [id]);
 
   useEffect(() => {
-    if (product?.storageOptions?.length > 0) {
-      setInitialPrice(product.storageOptions[0].price);
+    if ((product?.storageOptions ?? []).length > 0) {
+      setInitialPrice(product!.storageOptions[0].price);
     }
   }, [product]);
 

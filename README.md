@@ -50,7 +50,7 @@ npm run dev
 ```bash
 web-challenge/
 ├── __tests__/             # Unit testing
-│   ├── cartUtils.test.ts  # Tests for trolley utilities
+│   ├── cart-utils.test.ts  # Tests for trolley utilities
 ├── public/                # Static files
 ├── src/
 │   ├── app/               # Next.js main routes and configuration
@@ -61,20 +61,20 @@ web-challenge/
 │   │   ├── layout.tsx     # Layout principal
 │   │   └── page.tsx       # Page page
 │   ├── components/        # Reusable components
-│   │   ├── Header.tsx     # Header of the application
-│   │   ├── ProductGrid.tsx # Product grid
-│   │   └── SearchInput.tsx # Search input component
+│   │   ├── header.tsx     # Header of the application
+│   │   ├── product-grid.tsx # Product grid
+│   │   └── search-input.tsx # Search input component
 │   ├── context/           # Context API
-│   │   └── CartContext.tsx # Cart status management
+│   │   └── cart-context.tsx # Cart status management
 │   ├── styles/            # CSS style files
 │   │   ├── cart.module.css
-│   │   ├── Header.module.css
+│   │   ├── header.module.css
 │   │   ├── Page.module.css
 │   │   ├── cart.module.css
-│   │   └── ProductGrid.module.css
+│   │   └── product-grid.module.css
 │   ├── utils/             # Application utilities
-│   │   ├── apiClient.ts   # API calls
-│   │   └── cartUtils.ts   # Auxiliary functions for the trolley
+│   │   ├── api-client.ts   # API calls
+│   │   └── cart-utils.ts   # Auxiliary functions for the trolley
 ├── .env                   # Environment variables
 ├── jest.config.js         # Jest configuration
 ├── jest.setup.ts          # Initial configuration file for Jest
