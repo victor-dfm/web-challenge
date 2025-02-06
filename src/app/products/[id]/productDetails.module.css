@@ -6,7 +6,7 @@
   gap: 2rem;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: var(--background);
 }
 
 .backButtonContainer {
@@ -21,7 +21,7 @@
   gap: 0.5rem;
   background: none;
   border: none;
-  color: #333;
+  color: var(--main-color);
   cursor: pointer;
   text-transform: uppercase;
   transition:
@@ -32,7 +32,6 @@
 }
 
 .backButton:hover {
-  color: #000;
   transform: scale(1.05);
 }
 
@@ -46,17 +45,19 @@
 }
 
 .imageContainer {
+  flex: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  height: 100%;
-  z-index: 2;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1;
 }
 
 .imageContainer img {
-  max-width: 100%;
-  max-height: 100%;
+  width: auto;
+  height: 80%;
+  z-index: 2;
   object-fit: contain;
 }
 
@@ -67,7 +68,7 @@
   text-align: left;
   gap: 2rem;
   padding: 2rem;
-  background-color: #fff;
+  background-color: var(--background);
   border-radius: 8px;
   max-width: 500px;
   margin: 0 auto;
@@ -87,17 +88,12 @@
   gap: 1rem;
 }
 
-.name {
-  font-size: 1.5rem;
-  color: #000;
-  margin-bottom: 0.5rem;
-}
-
 .brand {
-  font-size: 0.8rem;
-  color: #666;
-  display: flex;
-  justify-content: flex-start;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--second-color);
+  margin-bottom: 0.5rem;
+  z-index: 2;
 }
 
 .description {
@@ -107,7 +103,9 @@
 }
 
 .price {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  color: var(--main-color);
+  z-index: 2;
 }
 
 .actions {
@@ -158,21 +156,27 @@
 
 .colorOptionsContainer {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
   margin-top: 1rem;
-  justify-content: center;
+}
+
+.optionsColorsGrid {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
 }
 
 .colorOption {
   width: 30px;
   height: 30px;
-  cursor: pointer;
-  border: 2px solid #ddd;
+  border: 2px solid var(--second-color);
   transition: border-color 0.3s ease;
+  cursor: pointer;
 }
 
-.colorOption:hover {
-  border-color: #000;
+.colorOption.selected {
+  border: 2px solid var(--main-color);
 }
 
 .similarProductsTitle {
@@ -180,19 +184,18 @@
   text-transform: uppercase;
   margin-bottom: 1rem;
   text-align: left;
-  color: #000;
+  color: var(--main-color);
 }
 
 .similarProductsContainer {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .similarProducts {
   display: flex;
-  gap: 1rem;
   overflow-x: auto;
   padding: 1rem;
   scroll-behavior: smooth;
@@ -226,12 +229,10 @@
 }
 
 .specsContainer {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 1rem;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 .specsList {
@@ -250,6 +251,20 @@
   color: #000;
 }
 
+.storageOptionButton {
+  padding: 1rem;
+  width: 100px;
+  border: 1px solid var(--second-color);
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--background);
+  transition: background-color 0.3s ease, border-color 0.2s ease;
+}
+
+.storageOptionButton.selected {
+  border: 2px solid var(--main-color);
+}
+
 .storageOptionsContainer {
   margin-top: 1rem;
   width: 100%;
@@ -262,51 +277,54 @@
 }
 
 .storageOptionButton {
-  color: #000;
+  color: var(--main-color);
   padding: 1rem;
   width: 100px;
   height: 60px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--second-color);
   font-size: 1rem;
   text-align: center;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--background);
   transition:
     background-color 0.3s ease,
     border-color 0.2s ease;
 }
 
 .storageOptionButton.selected {
-  border: 1px solid #000;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  color: var(--background);
 }
 
 .storageOptionButton:hover {
   transform: scale(1.05);
-  background-color: #f9f9f9;
+  background-color: var(--main-color);
+  color: var(--hover-color);
 }
 
 .productTitle {
   font-size: 1.6rem;
-  color: #000;
+  color: var(--main-color);
   margin: 0;
 }
 
 .productPrice {
   font-size: 1.2rem;
-  color: #333;
+  color: var(--second-color);
   margin-top: 10px;
 }
 
 .sectionTitle {
   font-size: 1rem;
   text-transform: uppercase;
-  color: #333;
+  color: var(--second-color);
   margin-bottom: 1rem;
 }
 
 .productColor {
   font-size: 1rem;
-  color: #333;
+  color: var(--second-color);
   margin: 0;
 }
 
@@ -316,51 +334,29 @@
   flex-wrap: wrap;
 }
 
-.optionsColorsGrid {
-  display: flex;
-  gap: 1rem;
-  justify-content: left;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-}
-
-.optionButton {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #fff;
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.optionButton:hover {
-  border-color: #333;
-}
-
 .addButton {
   width: 100%;
   max-width: 400px;
-  padding: 0.8rem;
+  padding: 1rem;
   font-size: 1rem;
-  background-color: #000;
-  color: #ccc;
-  border: none;
-  cursor: not-allowed;
   text-transform: uppercase;
+  border: none;
 }
 
-.addButton:hover {
-  background-color: #28a745;
-  color: #fff;
+.addButton.disabled {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  cursor: not-allowed;
+}
+
+.addButton.enabled {
+  background-color: var(--main-color);
+  color: var(--background);
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.addButton:enabled:hover {
-  background-color: #218838;
+.addButton.enabled:hover {
+  background-color: #008000;
 }
 
 .specificationsContainer {
@@ -374,52 +370,30 @@
   text-transform: uppercase;
   margin-bottom: 1rem;
   text-align: left;
-  color: #000;
+  color: var(--main-color);
 }
 
 .specRow {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--main-color);
 }
 
 .specKey {
   font-size: 0.8rem;
   text-transform: uppercase;
-  color: #000;
+  color: var(--main-color);
   flex: 1;
 }
 
 .specValue {
   font-size: 0.8rem;
-  color: #000;
+  color: var(--main-color);
   flex: 2;
   text-align: left;
   padding-left: 1rem;
   word-wrap: break-word;
-}
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid black;
-  overflow: hidden;
-  height: 350px;
-  cursor: pointer;
-  background-color: white;
-}
-
-.card:hover .overlay {
-  bottom: 0;
-}
-
-.card:hover .brand,
-.card:hover .model,
-.card:hover .price {
-  color: white;
 }
 
 .overlay {
@@ -428,7 +402,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--overlay-color);
   transition: bottom 0.3s ease-in-out;
   z-index: 1;
 }
@@ -448,14 +422,46 @@
 }
 
 .model {
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  color: #000;
+  color: var(--main-color);
   z-index: 2;
 }
 
 .infoContainer {
   text-align: center;
+}
+
+.similarProductCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--main-color);
+  overflow: hidden;
+  height: 350px;
+  width: 350px;
+  cursor: pointer;
+  background-color: var(--background);
+}
+
+.similarProductCard:hover .overlay {
+  bottom: 0;
+}
+
+.similarProductCard:hover .brand,
+.similarProductCard:hover .model,
+.similarProductCard:hover .price {
+  color: var(--hover-color);
+}
+
+.productInfo {
+  flex: 20%;
+  padding: 1rem;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (max-width: 700px) {

@@ -1,18 +1,38 @@
 :root {
   --background-light: #ffffff;
-  --foreground-light: #171717;
+  --main-color-light: #000000;
+  --second-color-light: #999999;
+  --hover-light: #ffffff;
+  --overlay-light: #000000;
+  --button-background-light: #000000;
+  --button-text-light: #ffffff;
 
   --background-dark: #121212;
-  --foreground-dark: #ededed;
+  --main-color-dark: #ffffff;
+  --second-color-dark: #bbbbbb;
+  --hover-dark: #000000;
+  --overlay-dark: #ffffff;
+  --button-background-dark: #ffffff;
+  --button-text-dark: #000000;
 
   --background: var(--background-light);
-  --foreground: var(--foreground-light);
+  --main-color: var(--main-color-light);
+  --second-color: var(--second-color-light);
+  --hover-color: var(--hover-light);
+  --overlay-color: var(--overlay-light);
+  --button-background: var(--button-background-light);
+  --button-text: var(--button-text-light);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: var(--background-dark);
-    --foreground: var(--foreground-dark);
+    --main-color: var(--main-color-dark);
+    --second-color: var(--second-color-dark);
+    --hover-color: var(--hover-dark);
+    --overlay-color: var(--overlay-dark);
+    --button-background: var(--button-background-dark);
+    --button-text: var(--button-text-dark);
   }
 }
 
@@ -23,7 +43,7 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: var(--main-color);
   background: var(--background);
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

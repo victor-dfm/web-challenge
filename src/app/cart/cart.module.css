@@ -81,13 +81,13 @@
 .cartItemStorage,
 .cartItemQuantity {
   font-size: 1rem;
-  color: #333;
+  color: var(--main-color);
   padding: 0.5rem;
 }
 
 .cartItemPrice {
   font-size: 1rem;
-  color: #333;
+  color: var(--main-color);
   margin-top: 2rem;
   padding: 0.5rem;
 }
@@ -104,40 +104,6 @@
 .cartItemRemoveButton:hover {
   background-color: #c82333;
   color: #fff;
-}
-
-.cartItemInitialButton {
-  background-color: #547c2a;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 200px;
-}
-
-.cartItemRemoveAllButton {
-  background-color: #f80c0c;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 1rem;
-}
-
-.cartItem {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.cartItemPage {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-right: 1rem;
 }
 
 .title {
@@ -164,8 +130,8 @@
 
 .continueShoppingButton {
   background: none;
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
   padding: 1rem;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -176,8 +142,8 @@
 }
 
 .continueShoppingButton:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--hover-color);
 }
 
 .totalSection {
@@ -190,18 +156,14 @@
 }
 
 .totalText {
-  color: #333;
+  color: var(--main-color);
   margin-left: 0.5rem;
   text-transform: uppercase;
 }
 
-.totalAmount {
-  color: #000;
-}
-
 .payButton {
-  background: #000;
-  color: #fff;
+  background: var(--button-background);
+  color: var(--button-text);
   border: none;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -214,7 +176,7 @@
 }
 
 .payButton:hover {
-  background: #333;
+  background: var(--second-color);
 }
 
 @media (max-width: 700px) {

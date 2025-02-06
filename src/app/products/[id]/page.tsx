@@ -38,12 +38,6 @@ interface StorageOptions {
   price: number;
 }
 
-interface ImageOptions {
-  name: string;
-  hexCode: string;
-  imageUrl: string;
-}
-
 interface Product {
   id: string;
   brand: string;
@@ -60,13 +54,13 @@ export default function Page() {
   const params = useParams();
   const id = params.id;
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedImage, setSelectedImage] = useState<ImageOptions | null>(null);
+  const [initialPrice, setInitialPrice] = useState<number | null>(null);
+  const [defaultImage, setDefaultImage] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<StorageOptions | null>(
     null,
   );
   const { addToCart } = useCart();
-
-  const isAddToCartEnabled = selectedImage !== null && selectedStorage !== null;
 
   useEffect(() => {
     if (!id) return;
@@ -75,7 +69,14 @@ export default function Page() {
       try {
         const response = await apiClient.get(`/products/${id}`);
         setProduct(response.data);
-        setSelectedImage(response.data.colorOptions[0]);
+
+        if (response.data.storageOptions.length > 0) {
+          setInitialPrice(response.data.storageOptions[0].price);
+        }
+
+        if (response.data.colorOptions.length > 0) {
+          setDefaultImage(response.data.colorOptions[0].imageUrl);
+        }
       } catch (e) {
         console.error("Error fetching product: ", e);
       }
@@ -83,32 +84,31 @@ export default function Page() {
   }, [id]);
 
   useEffect(() => {
-    if (product?.storageOptions?.length) {
-      const defaultStorage = product.storageOptions.reduce((min, option) =>
-        option.price < min.price ? option : min,
-      );
-      setSelectedStorage(defaultStorage);
+    if (product?.storageOptions?.length > 0) {
+      setInitialPrice(product.storageOptions[0].price);
     }
   }, [product]);
 
   if (!product) return <p>Loading product details...</p>;
 
   const handleAddToCart = () => {
-    if (!isAddToCartEnabled) {
+    if (!selectedColor || !selectedStorage) {
       alert("Please select a storage and a colour.");
       return;
     }
 
     addToCart({
-      id: product.id,
-      name: product.name,
-      imageUrl: selectedImage.imageUrl,
-      selectedColor: selectedImage.name,
+      id: product!.id,
+      name: product!.name,
+      imageUrl: selectedColor.imageUrl,
+      selectedColor: selectedColor.name,
       selectedStorage: selectedStorage.capacity,
       price: selectedStorage.price,
       quantity: 1,
     });
   };
+
+  if (!product) return <p>Loading product details...</p>;
 
   return (
     <div className={styles.container}>
@@ -122,26 +122,29 @@ export default function Page() {
 
       <div className={styles.mainContainer}>
         <div className={styles.imageContainer}>
-          <img src={selectedImage?.imageUrl} alt={product.name} />
+          <img
+            src={selectedColor ? selectedColor.imageUrl : defaultImage!}
+            alt={product.name}
+          />
         </div>
 
         <div className={styles.infoProductContainer}>
           <div className={styles.infoProduct}>
             <p className={styles.productTitle}>{product.name}</p>
             <p className={styles.productPrice}>
-              From {selectedStorage?.price} EUR
+              From {selectedStorage ? selectedStorage.price : initialPrice} EUR
             </p>
           </div>
 
           <div className={styles.storageOption}>
             <p className={styles.sectionTitle}>
-              Storage, HOW MUCH SPACE DO YOU NEED?
+              STORAGE, HOW MUCH SPACE DO YOU NEED?
             </p>
             <div className={styles.optionsStorageGrid}>
               {product.storageOptions.map((option, index) => (
                 <button
                   key={index}
-                  className={`${styles.storageOptionButton} ${selectedStorage?.capacity === option.capacity ? "selected" : ""}`}
+                  className={`${styles.storageOptionButton} ${selectedStorage?.capacity === option.capacity ? styles.selected : ""}`}
                   onClick={() => setSelectedStorage(option)}
                 >
                   {option.capacity}
@@ -150,26 +153,27 @@ export default function Page() {
             </div>
           </div>
 
-          <div className={styles.colorOption}>
-            <p className={styles.sectionTitle}>Color, pick your favourite</p>
+          <div className={styles.colorOptionsContainer}>
+            <p className={styles.sectionTitle}>COLOR. PICK YOUR FAVOURITE.</p>
             <div className={styles.optionsColorsGrid}>
               {product.colorOptions.map((option) => (
                 <button
                   key={option.name}
-                  className={`${styles.colorOption} ${selectedImage?.name === option.name ? "selected" : ""}`}
+                  className={`${styles.colorOption} ${selectedColor?.name === option.name ? styles.selected : ""}`}
                   style={{ backgroundColor: option.hexCode }}
-                  onClick={() => setSelectedImage(option)}
-                  title={option.name}
+                  onClick={() => setSelectedColor(option)}
                 />
               ))}
             </div>
-            <p className={styles.productColor}>{selectedImage?.name}</p>
+            {selectedColor && (
+              <p className={styles.productColor}>{selectedColor.name}</p>
+            )}
           </div>
 
           <button
-            className={`${styles.addButton} ${isAddToCartEnabled ? "" : "disabled"}`}
+            className={`${styles.addButton} ${selectedColor && selectedStorage ? styles.enabled : styles.disabled}`}
             onClick={handleAddToCart}
-            disabled={!isAddToCartEnabled}
+            disabled={!selectedColor || !selectedStorage}
           >
             AÑADIR
           </button>
@@ -208,28 +212,23 @@ export default function Page() {
               href={`/products/${similarProduct.id}`}
               passHref
             >
-              <div
-                className={styles.scrollItem}
-                key={`${product.id}-${similarProduct.id}-${index}`}
-              >
-                <div className={styles.card}>
-                  <div className={styles.overlay} />
-                  <div className={styles.imageContainer}>
-                    <img
-                      src={similarProduct.imageUrl}
-                      alt={similarProduct.name}
-                    />
-                  </div>
+              <div className={styles.similarProductCard}>
+                <div className={styles.overlay} />
+                <div className={styles.imageContainer}>
+                  <img
+                    src={similarProduct.imageUrl}
+                    alt={similarProduct.name}
+                  />
+                </div>
 
-                  <div className={styles.infoContainer}>
-                    <p className={styles.brand}>{similarProduct.brand}</p>
+                <div className={styles.productInfo}>
+                  <p className={styles.brand}>{similarProduct.brand}</p>
 
-                    <div className={styles.bottomInfo}>
-                      <p className={styles.model}>{similarProduct.name}</p>
-                      <p className={styles.price}>
-                        {similarProduct.basePrice} EUR
-                      </p>
-                    </div>
+                  <div className={styles.bottomInfo}>
+                    <p className={styles.model}>{similarProduct.name}</p>
+                    <p className={styles.price}>
+                      {similarProduct.basePrice} EUR
+                    </p>
                   </div>
                 </div>
               </div>

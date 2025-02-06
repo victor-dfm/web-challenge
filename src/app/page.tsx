@@ -66,7 +66,6 @@ export default function Page() {
     [],
   );
 
-  if (loading) return <p className={styles.loading}>Loading the products...</p>;
   if (error) return <p>{error}</p>;
 
   return (

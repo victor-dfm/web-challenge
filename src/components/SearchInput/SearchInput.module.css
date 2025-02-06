@@ -1,7 +1,7 @@
 .container {
     width: 100%;
     margin-bottom: 1rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--main-color);
 }
 
 .input {
@@ -11,6 +11,6 @@
     border: none;
     border-bottom: 1px solid transparent;
     outline: none;
-    color: #333;
-    background-color: white;
+    color: var(--main-color);
+    background-color: var(--background);
 }

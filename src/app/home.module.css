@@ -9,7 +9,7 @@
 .searchContainer {
   width: 100%;
   margin-bottom: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--main-color);
 }
 
 .searchInput {
@@ -19,8 +19,8 @@
   border: none;
   border-bottom: 1px solid transparent;
   outline: none;
-  color: #333;
-  background-color: white;
+  color: var(--second-color);
+  background-color: var(--background);
 }
 
 .searchInputFocus {
@@ -28,7 +28,7 @@
 }
 
 .title {
-  color: black;
+  color: var(--main-color);
   width: 100%;
 }
 
@@ -36,23 +36,10 @@
   text-align: center;
   font-size: 18px;
   font-weight: bold;
-  color: black;
+  color: var(--main-color);
   margin-top: 20px;
-}
-
-.loading div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
-}
-
-.loading p {
-  animation: fadeInOut 1.5s infinite;
-}
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
 }

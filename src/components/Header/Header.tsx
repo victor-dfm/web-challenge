@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Link href="/public">
+      <Link href="/">
         <p>WebChallengeLogo</p>
       </Link>
       <div className={styles.cart}>
