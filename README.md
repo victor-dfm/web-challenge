@@ -49,41 +49,57 @@ npm run dev
 
 ```bash
 web-challenge/
-├── __tests__/             # Unit testing
-│   ├── cart-utils.test.ts  # Tests for trolley utilities
-├── public/                # Static files
+├── public/                    # Static files (e.g., images, icons)
 ├── src/
-│   ├── app/               # Next.js main routes and configuration
-│   │   ├── cart/          # Cart page
-│   │   ├── products/      # Product details page
-│   │   ├── favicon.ico    # Application icon
-│   │   ├── globals.css    # Global styles
-│   │   ├── layout.tsx     # Layout principal
-│   │   └── page.tsx       # Page page
-│   ├── components/        # Reusable components
-│   │   ├── header.tsx     # Header of the application
-│   │   ├── product-grid.tsx # Product grid
-│   │   └── search-input.tsx # Search input component
-│   ├── context/           # Context API
-│   │   └── cart-context.tsx # Cart status management
-│   ├── styles/            # CSS style files
-│   │   ├── cart.module.css
-│   │   ├── header.module.css
-│   │   ├── Page.module.css
-│   │   ├── cart.module.css
-│   │   └── product-grid.module.css
-│   ├── utils/             # Application utilities
-│   │   ├── api-client.ts   # API calls
-│   │   └── cart-utils.ts   # Auxiliary functions for the trolley
-├── .env                   # Environment variables
-├── jest.config.js         # Jest configuration
-├── jest.setup.ts          # Initial configuration file for Jest
-├── next.config.js         # Next.js configuration
-├── tsconfig.json          # TypeScript configuration
-├── .eslintrc.json         # ESLint configuration
-├── .prettierrc.json       # Prettier configuration
-├── package.json           # Dependencies and scripts
-└── README.md              # Project documentation
+│   ├── __tests__/              # Unit and integration tests
+│   │   ├── components/         # Tests for reusable components
+│   │   │   ├── header.test.tsx
+│   │   │   ├── product-grid.test.tsx
+│   │   │   ├── search-input.test.tsx
+│   │   ├── context/            # Tests for context management
+│   │   │   ├── cart-context.test.tsx
+│   │   ├── pages/              # Tests for individual pages
+│   │   │   ├── products/
+│   │   │   │   ├── [id]/product-details.test.tsx
+│   │   ├── utils/              # Tests for utility functions
+│   │   │   ├── api-client.test.ts
+│   │   │   ├── cart-utils.test.ts
+│   ├── app/                    # Next.js main routes and pages
+│   │   ├── cart/               # Shopping cart page
+│   │   ├── products/           # Product details page
+│   │   │   ├── [id]/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── product-details.module.css
+│   │   ├── favicon.ico         # Application icon
+│   │   ├── home.module.css     # Global styling
+│   │   ├── layout.tsx          # Main layout for the app
+│   │   ├── page.tsx            # Main page entry point
+│   ├── components/             # Reusable components
+│   │   ├── header/
+│   │   │   ├── header.module.css
+│   │   │   ├── header.tsx
+│   │   ├── product-grid/
+│   │   │   ├── product-grid.module.css
+│   │   │   ├── product-grid.tsx
+│   │   ├── search-input/
+│   │   │   ├── search-input.module.css
+│   │   │   ├── search-input.tsx
+│   ├── context/                # Global state management
+│   │   ├── cart-context.tsx
+│   ├── styles/                 # Global and modular styles
+│   │   ├── globals.css
+│   ├── utils/                  # Utility functions
+│   │   ├── api-client.ts
+│   │   ├── cart-utils.ts
+├── .env                         # Environment variables
+├── jest.config.js               # Jest configuration
+├── jest.setup.js                # Jest setup file
+├── next.config.js               # Next.js configuration
+├── tsconfig.json                # TypeScript configuration
+├── .eslintrc.json               # ESLint configuration
+├── .prettierrc.json             # Prettier configuration
+├── package.json                 # Dependencies and scripts
+└── README.md                    # Project documentation
 
 ```
 
@@ -103,7 +119,7 @@ Image optimisation:
 - Uses the next/image component to optimise images.
 
 Testing:
-- Critical functions, such as addToCart, have unit tests implemented with Jest.
+- Critical functions with unit tests implemented with Jest.
 
 ## Future Improvements
 
@@ -111,3 +127,4 @@ Testing:
 - Add animations to improve user experience.
 - Improving design and performance
 - Add more eslint rules
+- Add more test

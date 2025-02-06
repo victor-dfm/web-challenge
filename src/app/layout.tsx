@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import { CartProvider } from "@/context/cart-context";
-import Header from "../components/Header/header";
+import Header from "@/components/header/header";
 
 export const metadata: Metadata = {
   title: "Web Challenge",

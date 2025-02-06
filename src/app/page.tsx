@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import apiClient from "@/utils/api-client";
 import debounce from "lodash/debounce";
-import SearchInput from "@/components/SearchInput/search-input";
-import ProductGrid from "@/components/ProductGrid/product-grid";
+import SearchInput from "@/components/search-input/search-input";
+import ProductGrid from "@/components/product-grid/product-grid";
 
 import styles from "./home.module.css";
 

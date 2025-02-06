@@ -21,14 +21,16 @@ export default function Header() {
         <p>WebChallengeLogo</p>
       </Link>
       <div className={styles.cart}>
-        <Link href="/cart">
+        <Link href="/cart" aria-label="Go to cart">
           {isCartPage ? (
-            <BsBagFill className={styles.icon} />
+            <BsBagFill data-testid="cart-icon-filled" className={styles.icon} />
           ) : (
-            <BsBag className={styles.icon} />
+            <BsBag data-testid="cart-icon-empty" className={styles.icon} />
           )}
         </Link>
-        <span className={styles.counter}>{cartCount}</span>
+        <span className={styles.counter} data-testid="cart-counter">
+          {cartCount}
+        </span>
       </div>
     </header>
   );
